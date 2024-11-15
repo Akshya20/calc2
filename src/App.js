@@ -15,9 +15,9 @@ function App() {
   const handleEquals = () => {
     try {
       const result = calculateResult(input); 
-      if (result === Infinity ) {
-        setInput("Infinity"); 
-        setcount("Infinity");
+      if (result === Infinity || isNaN(result)) {
+        setInput("Error"); 
+        setCount("");
       } else {
         setInput(result.toString());
         setcount(result.toString());
@@ -52,6 +52,7 @@ function App() {
             if (operator === '*') {
                 pass1Result.push(prevNum * nextNum);
             } else if (operator === '/') {
+                if (nextNum === 0) return Infinity; 
                 pass1Result.push(prevNum / nextNum);
             }
             i += 2; 
