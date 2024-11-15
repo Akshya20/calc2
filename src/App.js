@@ -15,13 +15,16 @@ function App() {
   const handleEquals = () => {
     try {
       const result = calculateResult(input); 
-      if (result === Infinity || isNaN(result)) {
-        setInput("Error"); 
-        setcount("Error");
-      } else {
-        setInput(result.toString());
-        setcount(result.toString());
-      }
+      if (result === Infinity) {
+      setInput("Infinity"); 
+      setcount("");
+    } else if (isNaN(result)) {
+      setInput("NaN"); 
+      setcount("");
+    } else {
+      setInput(result.toString());
+      setcount(result.toString());
+    }
     } catch (error) {
       setInput('Error'); 
     }
