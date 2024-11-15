@@ -9,15 +9,15 @@ function App() {
   };
 
   const handleOperation = (op) => {
-    setInput((prevInput) => prevInput + ' ' + op + ' '); 
+    setInput((prevInput) => prevInput + op); 
   };
 
   const handleEquals = () => {
     try {
       const result = calculateResult(input); 
-      if (result === Infinity || isNaN(result)) {
-        setInput("Error"); 
-        setcount("Error");
+      if (result === Infinity ) {
+        setInput("Infinity"); 
+        setcount("Infinity");
       } else {
         setInput(result.toString());
         setcount(result.toString());
