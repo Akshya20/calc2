@@ -17,7 +17,7 @@ function App() {
       const result = calculateResult(input); 
       if (result === Infinity || isNaN(result)) {
         setInput("Error"); 
-        setCount("");
+        setcount("Error");
       } else {
         setInput(result.toString());
         setcount(result.toString());
