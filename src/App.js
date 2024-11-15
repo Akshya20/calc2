@@ -14,19 +14,24 @@ function App() {
 
   const handleEquals = () => {
     try {
+      if (!input || /[\+\-\*\/]$/.test(input)) {
+        setInput("Error");
+        setcount("Error");
+        return;
+      }
       const result = calculateResult(input); 
-      if (result === Infinity) {
-      setInput("Infinity"); 
-      setcount("Infinity");
-       } else if (result === NaN) {
-      setInput("NaN"); 
-      setcount("NaN");
-       } else {
-      setInput(result.toString());
-      setcount(result.toString());
-     }
+      if (result === "Infinity") {
+        setInput("Infinity");
+        setcount("Infinity");
+      } else if (result === "NaN") {
+        setInput("NaN");
+        setcount("NaN");
+      } else {
+        setInput(result.toString());
+        setcount(result.toString());
+      }
     } catch (error) {
-      setInput('Error'); 
+      setInput("Error"); 
     }
   };
 
@@ -55,7 +60,7 @@ function App() {
             if (operator === '*') {
                 pass1Result.push(prevNum * nextNum);
             } else if (operator === '/') {
-                if (nextNum === 0) return Infinity; 
+              if (nextNum === 0) return prevNum === 0 ? "NaN" : "Infinity";
                 pass1Result.push(prevNum / nextNum);
             }
             i += 2; 
