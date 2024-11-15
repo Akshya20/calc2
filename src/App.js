@@ -17,14 +17,14 @@ function App() {
       const result = calculateResult(input); 
       if (result === Infinity) {
       setInput("Infinity"); 
-      setcount("");
-    } else if (isNaN(result)) {
+      setcount("Infinity");
+       } else if (result === NaN) {
       setInput("NaN"); 
-      setcount("");
-    } else {
+      setcount("NaN");
+       } else {
       setInput(result.toString());
       setcount(result.toString());
-    }
+     }
     } catch (error) {
       setInput('Error'); 
     }
