@@ -15,8 +15,13 @@ function App() {
   const handleEquals = () => {
     try {
       const result = calculateResult(input); 
-      setInput(result.toString()); 
-      setcount(result.toString());
+      if (result === Infinity || isNaN(result)) {
+        setInput("Error"); 
+        setcount("Error");
+      } else {
+        setInput(result.toString());
+        setcount(result.toString());
+      }
     } catch (error) {
       setInput('Error'); 
     }
@@ -24,6 +29,7 @@ function App() {
 
   const handleClear = () => {
     setInput(''); 
+    setcount('');
   };
  
   
@@ -77,43 +83,42 @@ function App() {
     <div>
       
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <input value={input} readOnly></input>
-
+        <input type="text" value={input} readOnly></input>
       </div>
       <div>{count}</div>
 
 
 
 
-      <div style={{ display: 'grid', justifyContent: 'center' }}>
       <div>
-        <button onClick={() => handleClick("7")}>7</button>
-        <button onClick={() => handleClick("8")}>8</button>
-        <button onClick={() => handleClick("9")}>9</button>
-        <button onClick={() => handleOperation("+")}>+</button>
-      </div>
+      
+        <button type="button" onClick={() => handleClick("7")}>7</button>
+        <button  type="button" onClick={() => handleClick("8")}>8</button>
+        <button type="button" onClick={() => handleClick("9")}>9</button>
+        <button  type="button" onClick={() => handleOperation("+")}>+</button>
+     
 
-      <div>
-        <button onClick={() => handleClick("4")}>4</button>
-        <button onClick={() => handleClick("5")}>5</button>
-        <button onClick={() => handleClick("6")}>6</button>
-        <button onClick={() => handleOperation("-")}>-</button>
-      </div>
-      <div>
-        <button onClick={() => handleClick("1")}>1</button>
-        <button onClick={() => handleClick("2")}>2</button>
-        <button onClick={() => handleClick("3")}>3</button>
-        <button onClick={() => handleOperation("*")}>*</button>
-      </div>
-      <div>
-        <button onClick={handleClear }>C</button>
-        <button onClick={() => handleClick("0")}>0</button>
-        <button onClick={ handleEquals}>=</button>
-        <button onClick={() => handleOperation("/")}>/</button>
+     
+        <button  type="button" onClick={() => handleClick("4")}>4</button>
+        <button  type="button" onClick={() => handleClick("5")}>5</button>
+        <button  type="button" onClick={() => handleClick("6")}>6</button>
+        <button  type="button" onClick={() => handleOperation("-")}>-</button>
+     
+ 
+        <button type="button" onClick={() => handleClick("1")}>1</button>
+        <button type="button" onClick={() => handleClick("2")}>2</button>
+        <button type="button" onClick={() => handleClick("3")}>3</button>
+        <button type="button" onClick={() => handleOperation("*")}>*</button>
+      
+      
+        <button type="button" onClick={handleClear }>C</button>
+        <button type="button" onClick={() => handleClick("0")}>0</button>
+        <button type="button" onClick={ handleEquals}>=</button>
+        <button type="button" onClick={() => handleOperation("/")}>/</button>
       </div>
     </div>
-  </div >
- );
+   
+  );
 }
 
 export default App;
